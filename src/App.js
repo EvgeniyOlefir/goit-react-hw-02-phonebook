@@ -4,6 +4,13 @@ import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 
 class App extends Component {
+  addContact = ({ name, number }) => {
+    const contact = {
+      name,
+      number,
+    };
+  };
+
   render() {
     return (
       <div>

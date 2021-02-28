@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
+
+  nameInputId = uuidv4();
+  numberInputId = uuidv4();
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -13,6 +17,7 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state);
     this.props.onSubmit(this.state);
     this.reset();
   };
@@ -25,14 +30,15 @@ class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>Name</label>
+        <label htmlFor={this.nameInputId}>Name</label>
         <input
           type="text"
           name="name"
+          id={this.nameInputId}
           value={name}
           onChange={this.handleChange}
         />
-        <label>Number</label>
+        <label htmlFor={this.numberInputId}>Number</label>
         <input
           type="text"
           name="number"
@@ -40,7 +46,7 @@ class ContactForm extends Component {
           value={number}
           onChange={this.handleChange}
         />
-        <button type="submit"> Add contact</button>
+        <button type="submit">Add contact</button>
       </form>
     );
   }
