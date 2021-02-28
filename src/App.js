@@ -1,12 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-     
-    </div>
-  );
+import ContactForm from './components/ContactForm';
+import ContactList from './components/ContactList';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.addContact} />
+        <h2>Contacts</h2>
+
+        <ContactList />
+      </div>
+    );
+  }
 }
 
 export default App;
