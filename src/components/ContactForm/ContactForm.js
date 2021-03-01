@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+// import { ImPencil } from 'react-icons/im';
+import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
   state = {
@@ -17,7 +19,6 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     this.props.onSubmit(this.state);
     this.reset();
   };
@@ -29,24 +30,36 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>Name</label>
+      <form className={s.contactForm} onSubmit={this.handleSubmit}>
+        <label className={s.contactLabel} htmlFor={this.nameInputId}>
+          Name
+        </label>
         <input
+          className={s.contactInput}
           type="text"
           name="name"
           id={this.nameInputId}
           value={name}
           onChange={this.handleChange}
+          // required
         />
-        <label htmlFor={this.numberInputId}>Number</label>
+
+        <label className={s.contactLabel} htmlFor={this.numberInputId}>
+          Number
+        </label>
         <input
+          className={s.contactInput}
           type="text"
           name="number"
           id={this.numberInputId}
           value={number}
           onChange={this.handleChange}
+          // required
         />
-        <button type="submit">Add contact</button>
+
+        <button className={s.buttonAdd} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }
