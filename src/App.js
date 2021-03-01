@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
-// import Filter from './components/Filter';
+import Filter from './components/Filter/index';
 import s from './App.module.css';
 
 class App extends Component {
@@ -81,7 +81,7 @@ class App extends Component {
         <h1 className={s.mainTitle}>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2 className={s.secondaryTitle}>Contacts</h2>
-        {/* <Filter value={filter} onInputChange={this.handleFilterChange} /> */}
+        <Filter value={filter} onInputChange={this.handleFilterChange} />
         <ContactList
           contacts={visibleContacts}
           handleDeleteContact={this.deleteContact}
