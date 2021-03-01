@@ -1,14 +1,38 @@
 import React from 'react';
-// import { ImBin } from 'react-icons/im';
-import s from './ContactListItem.module.css';
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  contactListItem: {
+    marginTop: 10,
+    backgroundColor: '#eeeeff',
+    fontFamily: 'roboto',
+  },
+});
 
 export default function ContactListItem({ id, name, number, onDeleteContact }) {
+  const classes = useStyles();
   return (
-    <li className={s.contactListItem}>
-      <span>{name}:</span> {number}
-      <button type="button" onClick={() => onDeleteContact(id)}>
-        Delete
-      </button>
-    </li>
+    <Card className={classes.contactListItem}>
+      <CardContent>
+        <span>{name}:</span> {number}
+      </CardContent>
+      <CardActions>
+        <IconButton
+          color="primary"
+          aria-label="upload picture"
+          component="span"
+          onClick={() => onDeleteContact(id)}
+        >
+          <DeleteIcon />
+        </IconButton>
+      </CardActions>
+    </Card>
   );
 }

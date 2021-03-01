@@ -1,10 +1,12 @@
 .contactForm {
   display: flex;
   justify-content: center;
+  /* flex-direction: column; */
 }
 
 .contactLabel {
   font-weight: bold;
+  margin-right: 10px;
 }
 
 .contactInput {
